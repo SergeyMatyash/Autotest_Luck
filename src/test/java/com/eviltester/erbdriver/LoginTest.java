@@ -20,10 +20,23 @@ public class LoginTest {
 
         //Waiting until page is loaded
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        WebElement login_button = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@class=\"main-menu-items\"]/li[3]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class=\"main-menu-items\"]/li[3]")));
 
         //Login button detection and clicking
-        driver.findElement(By.xpath("//li[@ data-index=\"2\"]")).click();
+        WebElement logginButton = driver.findElement(By.xpath("//li[@ data-index=\"2\"]")); //.click();
+        logginButton.click();
+
+
+        WebElement usernameField = driver.findElement(By.name("userName"));
+        WebElement passwordField = driver.findElement(By.name("password"));
+        WebElement submit_button = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+        usernameField.clear();
+        usernameField.sendKeys("greesnm40");
+        passwordField.clear();
+        passwordField.sendKeys("123asdQ!");
+        submit_button.click();
+
+
 
     /*
         driver.close();
